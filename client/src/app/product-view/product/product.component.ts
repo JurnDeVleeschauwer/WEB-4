@@ -12,8 +12,7 @@ export class ProductComponent implements OnInit {
   constructor() {
     //this.name = 'tomato';
     //this.price = 1;
-    //this.imgSource =
-    'C:UsersJurngitweb4-assignmentclientsrcappimg\temporaryAllocator.jfif';
+    //this.imgSource ='C:UsersJurngitweb4-assignmentclientsrcappimg\temporaryAllocator.jfif';
   }
 
   ngOnInit(): void {}
