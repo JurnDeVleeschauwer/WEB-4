@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { PRODUCTEN } from '../mock-products';
+import { Component } from '@angular/core';
 import { ProductDataService } from '../product-data/product-data.service';
+import { Product } from '../product.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -8,9 +9,13 @@ import { ProductDataService } from '../product-data/product-data.service';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-  constructor(private _productDataService: ProductDataService) {}
+  private _fetchProducten$: Observable<Product[]>;
 
-  get producten() {
-    return this._productDataService.producten;
+  constructor(private _productDataService: ProductDataService) {
+    this._fetchProducten$ = this._productDataService.allProducten$;
+  }
+
+  get producten$(): Observable<Product[]> {
+    return this._fetchProducten$;
   }
 }

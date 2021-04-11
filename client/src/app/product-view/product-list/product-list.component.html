@@ -1,17 +1,26 @@
-<p>product-list works!</p>
-<div
-  fxLayout="row wrap"
-  fxLayout.xs="column"
-  fxLayoutGap="0.5%"
-  fxLayoutAlign="start"
->
-  <div 
-    class="recipe"
-    *ngFor="let localProduct of products"
-    fxFlex="0 0 calc(25%-0.5%)"
-    fxFlex.xs="100%"
-  >
-
-  <app-product [product] = "localProduct"></app-product>
+<div fxLayout="column" fxLayoutGap="2%">
+  <div *ngIf="producten$ | async as recipes; else loadingOrError">
+    <div
+      fxLayout="row wrap"
+      fxLayout.xs="column"
+      fxLayoutGap="0.5%"
+      fxLayoutAlign="start"
+    >
+      <div
+        class="recipe"
+        *ngFor="let localProduct of producten$ | async"
+        fxFlex="0 0 calc(25%-0.5%)"
+        fxFlex.xs="100%"
+      >
+        <app-product [product]="localProduct"></app-product>
+      </div>
+    </div>
   </div>
+
+  <ng-template #loadingOrError>
+    <span *ngIf="errorMessage; else loading"></span>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </ng-template>
 </div>
