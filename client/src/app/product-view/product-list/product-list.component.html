@@ -1,3 +1,6 @@
+<div>
+  <app-add-product></app-add-product>
+</div>
 <div fxLayout="column" fxLayoutGap="2%">
   <div *ngIf="producten$ | async as recipes; else loadingOrError">
     <div

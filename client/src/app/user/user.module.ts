@@ -1,20 +1,19 @@
 import { MaterialModule } from '../material/material.module';
-import { ProductComponent } from './product/product.component';
-import { ProductListComponent } from './product-list/product-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [ProductListComponent, AddProductComponent, ProductComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
   ],
-  exports: [ProductListComponent],
+  exports: [LoginComponent, RegisterComponent],
 })
-export class ProductViewModule {}
+export class UserModule {}

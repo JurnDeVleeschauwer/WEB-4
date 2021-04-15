@@ -1,0 +1,32 @@
+<p>add-product works!</p>
+<mat-card-content>
+  <form [formGroup]="productFG" (ngSubmit)="submitProduct()">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="name"
+        type="text"
+        formControlName="name"
+        aria-label="name"
+      />
+      <mat-error *ngIf="productFG.get('name')?.errors">
+        {{ getErrorMessage(productFG.get("name")["errors"]) }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="price"
+        type="text"
+        formControlName="price"
+        aria-label="price"
+      />
+      <mat-error *ngIf="productFG.get('price')?.errors">
+        {{ getErrorMessage(productFG.get("price")["errors"]) }}
+      </mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button [disabled]="!productFG.valid">
+      Add Product
+    </button>
+  </form>
+</mat-card-content>
