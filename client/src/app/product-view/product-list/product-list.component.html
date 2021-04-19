@@ -1,8 +1,6 @@
-<div>
-  <app-add-product></app-add-product>
-</div>
+<div></div>
 <div fxLayout="column" fxLayoutGap="2%">
-  <div *ngIf="producten$ | async as recipes; else loadingOrError">
+  <div *ngIf="producten$ | async as producten; else loadingOrError">
     <div
       fxLayout="row wrap"
       fxLayout.xs="column"
@@ -10,12 +8,12 @@
       fxLayoutAlign="start"
     >
       <div
-        class="recipe"
-        *ngFor="let localProduct of producten$ | async"
+        class="product"
+        *ngFor="let product of producten$ | async"
         fxFlex="0 0 calc(25%-0.5%)"
         fxFlex.xs="100%"
       >
-        <app-product [product]="localProduct"></app-product>
+        <app-product [product]="product"></app-product>
       </div>
     </div>
   </div>

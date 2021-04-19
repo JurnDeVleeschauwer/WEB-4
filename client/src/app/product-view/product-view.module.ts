@@ -6,6 +6,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
+const routes = [
+  { path: 'list', component: ProductListComponent },
+  { path: 'add', component: AddProductComponent },
+];
 
 @NgModule({
   declarations: [ProductListComponent, AddProductComponent, ProductComponent],
@@ -14,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
   ],
-  exports: [ProductListComponent],
+  exports: [ProductListComponent, AddProductComponent],
 })
 export class ProductViewModule {}
