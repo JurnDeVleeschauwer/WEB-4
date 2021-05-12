@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let product of shoppingCart$ | async">
+    <p>{{ product.name }} {{ product.price }}</p>
+    <button (click)="deleteItem(product.name)" data-cy="deleteButton">
+      Delete
+    </button>
+  </li>
+</ul>
+<button (click)="createOrder()" data-cy="createButton">Create Order</button>

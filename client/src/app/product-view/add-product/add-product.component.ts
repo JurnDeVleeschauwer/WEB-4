@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EMPTY } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { ProductDataService } from '../product-data/product-data.service';
 import { Product } from '../Product.model';
 
 @Component({
@@ -8,10 +11,12 @@ import { Product } from '../Product.model';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-  @Output() public newProduct = new EventEmitter<Product>();
   productFG: FormGroup;
+  errorMessage: any;
+  confirmationMessage: string;
+  @Output() add = new EventEmitter();
 
-  constructor() {}
+  constructor(private _productDataService: ProductDataService) {}
 
   ngOnInit() {
     this.productFG = new FormGroup({
@@ -20,13 +25,10 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  submitProduct(): boolean {
-    const product = new Product(
-      this.productFG.value.name,
-      this.productFG.value.price
+  onSubmit() {
+    this._productDataService.addNewProduct(
+      new Product(this.productFG.value.name, this.productFG.value.price)
     );
-    this.newProduct.emit(product);
-    return false;
   }
 
   getErrorMessage(errors: any): string {

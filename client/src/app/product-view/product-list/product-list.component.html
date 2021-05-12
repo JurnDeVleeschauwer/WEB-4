@@ -1,4 +1,3 @@
-<div></div>
 <div fxLayout="column" fxLayoutGap="2%">
   <div *ngIf="producten$ | async as producten; else loadingOrError">
     <div
@@ -13,7 +12,13 @@
         fxFlex="0 0 calc(25%-0.5%)"
         fxFlex.xs="100%"
       >
-        <app-product [product]="product"></app-product>
+        <app-product
+          [product]="product"
+          data-cy="productCardList"
+        ></app-product>
+        <button (click)="addItem(product)" data-cy="addButton">
+          Add To Cart
+        </button>
       </div>
     </div>
   </div>

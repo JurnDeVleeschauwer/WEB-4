@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductViewModule } from './product-view/product-view.module';
 import { UserModule } from './user/user.module';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -14,11 +14,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { ShoppingCartReducer } from './state/shopping-cart.reducer';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingBagComponent,
+    ShoppingCartComponent,
     MainNavComponent,
     PageNotFoundComponent,
   ],
@@ -34,8 +37,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatIconModule,
     MatListModule,
     AppRoutingModule,
+    FormsModule,
+    StoreModule.forRoot({ shoppingCart: ShoppingCartReducer }),
   ],
-  providers: [],
+  providers: [ShoppingCartComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
