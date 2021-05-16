@@ -18,7 +18,7 @@ namespace Api.Controllers
             _productRepository = context;
         }
 
-        // GET: api/Producten
+        // GET: api/WebShop
         /// <summary>
         /// Get all producten ordered by name
         /// </summary>
@@ -31,7 +31,7 @@ namespace Api.Controllers
             return _productRepository.GetBy(name, price);
         }
 
-        // GET: api/Producten/5
+        // GET: api/WebShop/5
         /// <summary>
         /// Get the product with given id
         /// </summary>
@@ -45,7 +45,7 @@ namespace Api.Controllers
             return product;
         }
 
-        // POST: api/Producten
+        // POST: api/WebShop
         /// <summary>
         /// Adds a new product
         /// </summary>
@@ -60,7 +60,7 @@ namespace Api.Controllers
             return CreatedAtAction(nameof(GetProduct), new { id = productToCreate.Id }, productToCreate);
         }
 
-        // PUT: api/Producten/5
+        // PUT: api/WebShop/5
         /// <summary>
         /// Modifies a product
         /// </summary>
@@ -78,7 +78,7 @@ namespace Api.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Producten/5
+        // DELETE: api/WebShop/5
         /// <summary>
         /// Deletes a product
         /// </summary>

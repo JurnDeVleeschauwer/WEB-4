@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace Api.Models
 {
-    public class Product
+    public class Order
     {
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
-        public int Price { get; set; }
+        public string Producten { get; set; }
 
 
-        public Product()
+        public Order()
         {
         }
 
-        public Product(string name, int price) : this()
+        public Order(string userName, string producten) : this()
         {
-            Name = name;
-            Price = price;
+            UserName = userName;
+            Producten = producten;
         }
 
 

@@ -1,5 +1,4 @@
 using Api.Data;
-using Api.Data.ProductRepository;
 using Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Api.Data.OrderRepository;
 
 namespace Api
 {
@@ -25,9 +25,13 @@ namespace Api
             services.AddControllers();
             services.AddDbContext<ProductContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
+            services.AddDbContext<OrderContext>(options =>
+          options.UseSqlServer(Configuration.GetConnectionString("OrderContext")));
 
             services.AddScoped<ProductDataInitializer>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<OrderDataInitializer>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             // Register the Swagger services
             services.AddOpenApiDocument(c =>
             {
@@ -42,7 +46,7 @@ namespace Api
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProductDataInitializer producDataInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ProductDataInitializer productDataInitializer, OrderDataInitializer orderDataInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -64,7 +68,8 @@ namespace Api
                 endpoints.MapControllers();
             });
 
-            producDataInitializer.InitializeData(); //.Wait();
+            productDataInitializer.InitializeData(); //.Wait();
+            orderDataInitializer.InitializeData();
         }
     }
 }

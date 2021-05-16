@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { StoreModule } from '@ngrx/store';
 import { ShoppingCartReducer } from './state/shopping-cart.reducer';
 import { FormsModule } from '@angular/forms';
+import { OrderListComponent } from './shopping-cart/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     ShoppingCartComponent,
     MainNavComponent,
     PageNotFoundComponent,
+    OrderListComponent,
   ],
   imports: [
     BrowserModule,
