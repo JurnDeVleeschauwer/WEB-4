@@ -1,8 +1,10 @@
-<mat-card data-cy="orderCard">
+<mat-card data-cy="order-card">
   <mat-card-header>
-    <mat-card-title>{{ order.userName }}</mat-card-title>
+    <mat-card-title data-cy="order-card-username">{{
+      order.userName
+    }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <h3 mat-subheader>{{ order.producten }}</h3>
+    <h3 mat-subheader data-cy="order-card-producten">{{ order.producten }}</h3>
   </mat-card-content>
 </mat-card>

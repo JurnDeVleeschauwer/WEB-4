@@ -19,6 +19,8 @@ import { ShoppingCartReducer } from './state/shopping-cart.reducer';
 import { FormsModule } from '@angular/forms';
 import { OrderListComponent } from './shopping-cart/order-list/order-list.component';
 import { httpInterceptorProviders } from './user/interceptors';
+import { OrderComponent } from './shopping-cart/order/order.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { httpInterceptorProviders } from './user/interceptors';
     MainNavComponent,
     PageNotFoundComponent,
     OrderListComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { httpInterceptorProviders } from './user/interceptors';
     MatListModule,
     AppRoutingModule,
     FormsModule,
+    MaterialModule,
     StoreModule.forRoot({ shoppingCart: ShoppingCartReducer }),
   ],
   providers: [ShoppingCartComponent, httpInterceptorProviders],

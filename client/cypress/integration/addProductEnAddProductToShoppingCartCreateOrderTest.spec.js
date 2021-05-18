@@ -1,4 +1,4 @@
-describe('add peoduct', function(){
+describe('add product', function(){
     it('add new product', function() {
         cy.visit('http://localhost:4200/');
         cy.get('[data-cy=login-button-nav]').click();
@@ -17,7 +17,7 @@ describe('add peoduct', function(){
  
     });
 
-    it('add product to shoppingCart en create order', function(){
+    it('add product to shoppingCart and create order', function(){
         cy.visit('http://localhost:4200/product/list');
  
         cy.get('[data-cy=login-button-nav]').click();
@@ -30,6 +30,7 @@ describe('add peoduct', function(){
         cy.visit('http://localhost:4200/shoppingCart');
         
         cy.get('[data-cy=create-order-button]').click();
-        //cy.get('[data-cy=orderCardList]').should('have.value', 'fake@email.com [{"name":"fzefez","price":99}]')
+        cy.get('[data-cy=order-card-username]').should('have.value', 'fake@email.com');
+        cy.get('[data-cy=order-card-producten]').should('have.value', '[{"name":"fzefez","price":99}]');
     });
 });
