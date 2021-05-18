@@ -7,10 +7,6 @@ describe('autentication', function(){
         cy.get('[data-cy=register-firstname]').type('fakefirstname').should('have.value', 'fakefirstname');
         cy.get('[data-cy=register-lastname]').type('fakelastname').should('have.value', 'fakelastname');
         cy.get('[data-cy=register-email]').type('fake@email.com').should('have.value', 'fake@email.com');
-        cy.get('[data-cy=login-password]').type('a')
-        cy.get('[data-cy=login-password]').type('azertyfzefz')
-        cy.get('[data-cy=login-password]').type('Azertyfzefz')
-        cy.get('[data-cy=login-password]').type('Azertyfzefz123')
         cy.get('[data-cy=register-password]').type('Azerty123+').should('have.value', 'Azerty123+');
         cy.get('[data-cy=register-confirm-password]').type('Azerty123+').should('have.value', 'Azerty123+');
         cy.get('[data-cy=register-button]').click();

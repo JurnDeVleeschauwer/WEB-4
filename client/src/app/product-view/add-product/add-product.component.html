@@ -6,6 +6,7 @@
         placeholder="name"
         type="text"
         formControlName="name"
+        data-cy="add-product-name"
         aria-label="name"
       />
       <mat-error *ngIf="productFG.get('name')?.errors">
@@ -18,13 +19,19 @@
         placeholder="price"
         type="text"
         formControlName="price"
+        data-cy="add-product-price"
         aria-label="price"
       />
       <mat-error *ngIf="productFG.get('price')?.errors">
         {{ getErrorMessage(productFG.get("price")["errors"]) }}
       </mat-error>
     </mat-form-field>
-    <button type="submit" mat-raised-button [disabled]="!productFG.valid">
+    <button
+      type="submit"
+      data-cy="add-product-button"
+      mat-raised-button
+      [disabled]="!productFG.valid"
+    >
       Add Product
     </button>
   </form>

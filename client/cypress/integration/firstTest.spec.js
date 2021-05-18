@@ -1,7 +1,7 @@
 describe('my first test', function(){
     it('our app runs', function() {
         cy.visit('http://localhost:4200/product/list');
-        cy.get('[data-cy=productCardList]').should('be.visible');
+        cy.get('[data-cy=product-card-list]').should('be.visible');
         cy.get('[data-cy=productCard]').should('be.visible');
     });
 
