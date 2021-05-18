@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { Order } from '../extra/order.model';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { AuthenticationService } from 'src/app/user/authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,10 @@ export class OrderDataService {
   private _orders: Order[];
   private _orders$ = new BehaviorSubject<Order[]>([]);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private _authenticationService: AuthenticationService
+  ) {
     this.orders$.subscribe((ord: Order[]) => {
       this._orders = ord;
       this._orders$.next(this._orders);
@@ -23,15 +28,20 @@ export class OrderDataService {
   }
 
   get orders$(): Observable<Order[]> {
-    return this.http.get('/api/Order').pipe(
-      catchError(this.handleError),
-      map((list: any[]): Order[] => list.map(Order.fromJSON))
-    );
+    return this.http
+      .get(
+        `${environment.apiUrl}/Order?userName=` +
+          this._authenticationService.user$.getValue()
+      )
+      .pipe(
+        catchError(this.handleError),
+        map((list: any[]): Order[] => list.map(Order.fromJSON))
+      );
   }
 
   addNewOrder(order: Order) {
     return this.http
-      .post(`/api/Order/`, order.toJSON())
+      .post(`${environment.apiUrl}/Order/`, order.toJSON())
       .pipe(catchError(this.handleError), map(Order.fromJSON))
       .subscribe((ord: Order) => {
         this._orders = [...this._orders, Order.fromJSON(ord)];

@@ -9,6 +9,7 @@ import {
   AddItemAction,
   DeleteItemAction,
 } from '../state/shopping-cart.actions';
+import { AuthenticationService } from '../user/authentication/authentication.service';
 import { Order } from './extra/order.model';
 import { OrderDataService } from './order-data/order-data.service';
 
@@ -23,7 +24,8 @@ export class ShoppingCartComponent implements OnInit {
   constructor(
     private _store: Store<AppState>,
     private http: HttpClient,
-    private _orderDataService: OrderDataService
+    private _orderDataService: OrderDataService,
+    private _authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -41,8 +43,14 @@ export class ShoppingCartComponent implements OnInit {
   createOrder() {
     console.log(JSON.stringify(this.getState(this._store).shoppingCart));
     this._orderDataService.addNewOrder(
-      new Order('TODO', JSON.stringify(this.getState(this._store).shoppingCart))
+      new Order(
+        this._authenticationService.user$.getValue(),
+        JSON.stringify(this.getState(this._store).shoppingCart)
+      )
     );
+    this.getState(this._store).shoppingCart.forEach((element) => {
+      this.deleteItem(element.name);
+    });
   }
 
   getState(store: Store<AppState>): AppState {

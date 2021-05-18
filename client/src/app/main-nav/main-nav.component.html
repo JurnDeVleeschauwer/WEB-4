@@ -25,7 +25,21 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>shoppingapp</span>
+      <span>Web Shop</span>
+      <span class="fill-space"></span>
+      <span *ngIf="loggedInUser$ | async as user; else loginTemplate">
+        {{ user }}
+        <button (click)="logout()" data-cy="logout-button" mat-flat-button>
+          logout
+        </button>
+      </span>
+      <ng-template #loginTemplate>
+        <span>
+          <button (click)="login()" data-cy="login-button-nav" mat-flat-button>
+            login
+          </button>
+        </span>
+      </ng-template>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

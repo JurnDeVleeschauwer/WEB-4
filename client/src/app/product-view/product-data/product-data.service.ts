@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { Product } from '../product.model';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class ProductDataService {
   }
 
   get producten$(): Observable<Product[]> {
-    return this.http.get('/api/WebShop').pipe(
+    return this.http.get(`${environment.apiUrl}/WebShop`).pipe(
       catchError(this.handleError),
       map((list: any[]): Product[] => list.map(Product.fromJSON))
     );
@@ -31,7 +32,7 @@ export class ProductDataService {
 
   addNewProduct(product: Product) {
     return this.http
-      .post(`/api/WebShop/`, product.toJSON())
+      .post(`${environment.apiUrl}/WebShop/`, product.toJSON())
       .pipe(catchError(this.handleError), map(Product.fromJSON))
       .subscribe((pro: Product) => {
         this._producten = [...this._producten, Product.fromJSON(pro)];

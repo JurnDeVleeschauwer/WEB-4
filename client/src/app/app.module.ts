@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductViewModule } from './product-view/product-view.module';
-import { UserModule } from './user/user.module';
+import { UserModule } from './user/authentication/user.module';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { ShoppingCartReducer } from './state/shopping-cart.reducer';
 import { FormsModule } from '@angular/forms';
 import { OrderListComponent } from './shopping-cart/order-list/order-list.component';
+import { httpInterceptorProviders } from './user/interceptors';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { OrderListComponent } from './shopping-cart/order-list/order-list.compon
     FormsModule,
     StoreModule.forRoot({ shoppingCart: ShoppingCartReducer }),
   ],
-  providers: [ShoppingCartComponent],
+  providers: [ShoppingCartComponent, httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

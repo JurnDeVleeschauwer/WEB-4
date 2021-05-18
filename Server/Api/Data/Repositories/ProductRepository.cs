@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Api.Data.OrderRepository
+namespace Api.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
