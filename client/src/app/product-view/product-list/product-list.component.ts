@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductDataService } from '../product-data/product-data.service';
 import { Product } from '../product.model';
 import { Observable } from 'rxjs';
-import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart-folder/shopping-cart.component';
 
 @Component({
   selector: 'app-product-list',

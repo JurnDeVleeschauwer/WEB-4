@@ -19,7 +19,7 @@ namespace Api.Data
             //Another way to seed the database
             builder.Entity<Order>().HasData(
                  new Order { Id = 1, UserName = "Jurn", Producten = "{ Id = 1, Name = 'spagetti', Price = 5 }" },
-                 new Order { Id = 2, UserName = "Jurn", Producten = "{ Id = 1, Name = 'soep', Price = 9 }" }
+                 new Order { Id = 2, UserName = "Jurn", Producten = "{ Id = 2, Name = 'soep', Price = 9 }" }
   );
 
         }

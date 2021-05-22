@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { State, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { Product } from '../product-view/product.model';
-import { AppState } from '../state/app-state.model';
+import { Product } from '../../product-view/product.model';
+import { AppState } from '../../state/app-state.model';
 import {
   AddItemAction,
   DeleteItemAction,
-} from '../state/shopping-cart.actions';
-import { AuthenticationService } from '../user/authentication/authentication.service';
-import { Order } from './extra/order.model';
-import { OrderDataService } from './order-data/order-data.service';
+} from '../../state/shopping-cart.actions';
+import { AuthenticationService } from '../../user/authentication/authentication.service';
+import { Order } from './../extra/order.model';
+import { OrderDataService } from './../order-data/order-data.service';
 
 @Component({
   selector: 'app-shopping-cart',

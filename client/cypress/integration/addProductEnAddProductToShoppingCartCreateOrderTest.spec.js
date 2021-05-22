@@ -2,7 +2,7 @@ describe('add product', function(){
     it('add new product', function() {
         cy.visit('http://localhost:4200/');
         cy.get('[data-cy=login-button-nav]').click();
-        cy.get('[data-cy=login-email]').type('fake@email.com').should('have.value', 'fake@email.com');
+        cy.get('[data-cy=login-email]').type('admin@email.com').should('have.value', 'admin@email.com');
         cy.get('[data-cy=login-password]').type('Azerty123+').should('have.value', 'Azerty123+');
         cy.get('[data-cy=login-button]').click();
 

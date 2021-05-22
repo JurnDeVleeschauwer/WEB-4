@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart-folder/shopping-cart.component';
 import { ProductViewModule } from './product-view/product-view.module';
 import { UserModule } from './user/authentication/user.module';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -21,20 +21,15 @@ import { OrderListComponent } from './shopping-cart/order-list/order-list.compon
 import { httpInterceptorProviders } from './user/interceptors';
 import { OrderComponent } from './shopping-cart/order/order.component';
 import { MaterialModule } from './material/material.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ShoppingCartComponent,
-    MainNavComponent,
-    PageNotFoundComponent,
-    OrderListComponent,
-    OrderComponent,
-  ],
+  declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ProductViewModule,
+    ShoppingCartModule,
     UserModule,
     LayoutModule,
     MatToolbarModule,

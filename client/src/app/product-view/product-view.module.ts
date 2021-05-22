@@ -7,10 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from '../user/authentication/auth.gaurd';
 
 const routes = [
   { path: 'list', component: ProductListComponent },
-  { path: 'add', component: AddProductComponent },
+  { path: 'add', component: AddProductComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -22,6 +23,6 @@ const routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
-  exports: [ProductListComponent, AddProductComponent],
+  exports: [ProductListComponent, AddProductComponent, ProductComponent],
 })
 export class ProductViewModule {}

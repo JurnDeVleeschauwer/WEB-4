@@ -1,10 +1,10 @@
 ﻿namespace Api.Data
 {
-    public class OrderDataInitializer
+    public class CustomerDataInitializer
     {
-        private readonly OrderContext _dbContext;
+        private readonly ProductContext _dbContext;
 
-        public OrderDataInitializer(OrderContext dbContext)
+        public CustomerDataInitializer(ProductContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -14,7 +14,7 @@
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
-                //seeding the database with orders, see DBContext               
+                //seeding the database with producten, see DBContext               
             }
         }
 
